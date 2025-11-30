@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Automated Invoice Generator</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+<header>
+    <div class="container">
+        <h1>Automated Invoice Generator</h1>
+        <p>Generate invoices instantly and download as PDF</p>
+    </div>
+</header>
+
+<main>
+    <div class="container">
+        <section class="invoice-form">
+            <h2>Create New Invoice</h2>
+            <form action="/create_invoice" method="post">
+                <div class="form-group">
+                    <label>Customer Name:</label>
+                    <input type="text" name="customer_name" placeholder="Enter customer name" required>
+                </div>
+                <div class="form-group">
+                    <label>Customer Email:</label>
+                    <input type="email" name="customer_email" placeholder="Enter customer email" required>
+                </div>
+                <div class="form-group">
+                    <label>Item Name:</label>
+                    <input type="text" name="item" placeholder="Enter item name" required>
+                </div>
+                <div class="form-group">
+                    <label>Quantity:</label>
+                    <input type="number" name="quantity" placeholder="Enter quantity" required>
+                </div>
+                <div class="form-group">
+                    <label>Price per Item:</label>
+                    <input type="number" step="0.01" name="price" placeholder="Enter price" required>
+                </div>
+                <button type="submit" class="btn">Generate Invoice</button>
+            </form>
+        </section>
+
+        <section class="quick-links">
+            <a href="/history" class="btn-secondary">View Invoice History</a>
+        </section>
+    </div>
+</main>
+<footer>
+    <div class="container">
+        <p>All invoices are downloaded automatically as PDF. &copy; 2025 Invoice Generator</p>
+    </div>
+</footer>
+</body>
+</html>

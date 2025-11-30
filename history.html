@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice History</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Invoice History</h1>
+            <p>All previously generated invoices are listed below</p>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <table class="history-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Customer</th>
+                        <th>Email</th>
+                        <th>Item</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Total</th>
+                        <th>Date</th>
+                        <th>PDF</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for invoice in invoices %}
+                    <tr>
+                        <td>{{ invoice[0] }}</td>
+                        <td>{{ invoice[1] }}</td>
+                        <td>{{ invoice[2] }}</td>
+                        <td>{{ invoice[3] }}</td>
+                        <td>{{ invoice[4] }}</td>
+                        <td>{{ invoice[5] }}</td>
+                        <td>{{ invoice[6] }}</td>
+                        <td>{{ invoice[7] }}</td>
+                        <td>
+                            <a class="btn-secondary" href="{{ url_for('static', filename=invoice[8].replace('invoices/','')) }}" target="_blank">
+                                Download
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <br>
+            <a href="/" class="btn">Create New Invoice</a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Automated Invoice Generator</p>
+        </div>
+    </footer>
+</body>
+</html>
